@@ -1,4 +1,4 @@
-package com.springkotlin.controller
+package com.springkotlin
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

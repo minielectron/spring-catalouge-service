@@ -1,6 +1,6 @@
 package com.springkotlin.controller
 
-import com.springkotlin.controller.CatalogueServiceApplication
+import com.springkotlin.CatalogueServiceApplication
 import com.springkotlin.controller.services.Greet
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test

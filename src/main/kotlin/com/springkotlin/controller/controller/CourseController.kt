@@ -14,4 +14,21 @@ class CourseController(private val courseService: CourseService) {
     fun addCourse(@RequestBody course: CourseDTO): CourseDTO {
         return courseService.addCourse(course)
     }
+
+    @GetMapping
+    fun getAllCourses(): List<CourseDTO> {
+        return courseService.getAllCourse()
+    }
+
+    @PutMapping("/{course_id}")
+    fun updateCourseById(@RequestBody course: CourseDTO, @PathVariable("course_id") id: Int): CourseDTO {
+        return courseService.updateCourse(id, course)
+    }
+
+    @DeleteMapping("/{course_id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    fun deleteCourseById(@PathVariable("course_id") id: Int) {
+        return courseService.deleteCourse(id)
+    }
+
 }
