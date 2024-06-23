@@ -9,11 +9,13 @@ import io.mockk.every
 import io.mockk.just
 import io.mockk.runs
 import io.mockk.verify
+import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.test.web.reactive.server.WebTestClient
+import org.springframework.util.Assert
 
 
 @WebMvcTest(controllers = [CourseController::class])
@@ -57,6 +59,26 @@ class CourseControllerUnitTest {
             .bodyValue(courseDTO)
             .exchange()
             .expectStatus().isBadRequest // This will test the bad request
+
+    }
+
+    @Test
+    fun addCourse_exception_handler() {
+        val courseDTO = CourseDTO(id = null, "Android", "Tech")
+        val errorMessage = "Error occurred"
+        every {  courseServiceMock.addCourse(any()) } throws RuntimeException(errorMessage)
+
+        val response = webTestClient
+            .post()
+            .uri("/v1/courses")
+            .bodyValue(courseDTO)
+            .exchange()
+            .expectStatus().is5xxServerError // This will test the bad request
+            .expectBody(String::class.java)
+            .returnResult()
+            .responseBody
+
+        Assertions.assertEquals(errorMessage, response)
 
     }
 
