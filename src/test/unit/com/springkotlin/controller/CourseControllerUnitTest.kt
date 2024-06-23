@@ -47,6 +47,20 @@ class CourseControllerUnitTest {
     }
 
     @Test
+    fun addCourse_validation() {
+        val courseDTO = CourseDTO(id = null, "", "Tech")
+        val response = courseDTO.copy(1)
+        every {  courseServiceMock.addCourse(any()) } returns response
+        webTestClient
+            .post()
+            .uri("/v1/courses")
+            .bodyValue(courseDTO)
+            .exchange()
+            .expectStatus().isBadRequest // This will test the bad request
+
+    }
+
+    @Test
     fun deleteCourseTest(){
 
         every { courseServiceMock.deleteCourse(any()) } just runs

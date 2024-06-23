@@ -2,16 +2,19 @@ package com.springkotlin.controller.controller
 
 import com.springkotlin.controller.dto.CourseDTO
 import com.springkotlin.controller.services.CourseService
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/v1/courses")
+@Validated
 class CourseController(private val courseService: CourseService) {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun addCourse(@RequestBody course: CourseDTO): CourseDTO {
+    fun addCourse(@RequestBody @Valid course: CourseDTO): CourseDTO {
         return courseService.addCourse(course)
     }
 
