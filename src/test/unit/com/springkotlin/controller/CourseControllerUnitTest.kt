@@ -48,7 +48,7 @@ class CourseControllerUnitTest {
 
     @Test
     fun addCourse_validation() {
-        val courseDTO = CourseDTO(id = null, "", "Tech")
+        val courseDTO = CourseDTO(id = null, "", "")
         val response = courseDTO.copy(1)
         every {  courseServiceMock.addCourse(any()) } returns response
         webTestClient
