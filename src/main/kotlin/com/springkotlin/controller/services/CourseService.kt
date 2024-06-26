@@ -2,7 +2,7 @@ package com.springkotlin.controller.services
 
 import com.springkotlin.controller.dto.CourseDTO
 import com.springkotlin.controller.entity.Course
-import com.springkotlin.controller.repository.CourseRepository
+import com.springkotlin.repository.CourseRepository
 import com.springkotlin.exception.CourseNotFoundException
 import io.github.oshai.kotlinlogging.KLogging
 import org.springframework.stereotype.Service

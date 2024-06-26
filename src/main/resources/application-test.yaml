@@ -1,4 +1,21 @@
 spring:
   application:
     name: course-catalog-service
-message: Hello from test profile
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  jpa:
+    database: h2
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true #it will generate tables correspond to entity
+    show-sql: true # it will show the queries in terminal, not recommended for prod environments.
+  h2:
+    console:
+      enabled: true
+message: Hello from default profile
+
+server:
+  address: 0.0.0.0
+  port: 8080

@@ -2,7 +2,7 @@ package com.springkotlin.controller
 
 import com.springkotlin.CatalogueServiceApplication
 import com.springkotlin.controller.dto.CourseDTO
-import com.springkotlin.controller.repository.CourseRepository
+import com.springkotlin.repository.CourseRepository
 import com.springkotlin.controller.util.CourseUtil
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.BeforeEach
